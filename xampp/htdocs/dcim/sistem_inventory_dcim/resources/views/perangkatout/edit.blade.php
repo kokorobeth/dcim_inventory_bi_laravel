@@ -70,20 +70,48 @@
                     {{ $message }}
                 </div>
             @enderror
-            <label for="petugas">Petugas</label>
-            <input type="text" class="form-control" value="{{$perangkatout->petugas}}" name="petugas" id="title">
-            @error('petugas')
+            <label for="petugas_id">Petugas</label>
+            <select name="petugas_id" id="" class="form-control">
+            <option value="">-</option>
+                @foreach ($nm_petugas as $value)
+                    @if ($value->id == $perangkatout->petugas_id)
+                    <option value="{{$value->id}}" selected>{{$value->name}}</option>
+                    @else 
+                    <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endif
+                @endforeach
+            </select>
+            @error('petugas_id')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
             @enderror
-            <label for="ruangan">Ruangan</label>
-            <input type="text" class="form-control" value="{{$perangkatout->ruangan}}" name="ruangan" id="title">
-            @error('ruangan')
+            <label for="vendor_id">Vendor</label>
+            <select name="vendor_id" id="" class="form-control">
+            <option value="">-</option>
+                @foreach ($nm_vendor as $value)
+                    @if ($value->id == $perangkatout->vendor_id)
+                    <option value="{{$value->id}}" selected>{{$value->name}}</option>
+                    @else 
+                    <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endif
+                @endforeach
+            </select>
+            @error('vendor_id')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
             @enderror
+            <label for="ruangan_id">Ruangan</label>
+            <select name="ruangan_id" id="" class="form-control">
+                <option value="">-</option>
+                    @foreach ($nm_ruangan as $value)
+                        @if ($value->id == $perangkatout->ruangan_id)
+                        <option value="{{$value->id}}" selected>{{$value->name}}</option>
+                        @else 
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                        @endif
+                    @endforeach
             <label for="rack">Rack</label>
             <input type="text" class="form-control" value="{{$perangkatout->rack}}" name="rack" id="title">
             @error('rack')

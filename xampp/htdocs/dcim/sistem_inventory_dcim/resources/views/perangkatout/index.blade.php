@@ -6,7 +6,7 @@
 
 @section('content')
     <a href="/perangkatout/create" class="btn btn-primary my-2">Tambah</a>
-    <table class="table">
+    <table id="example1" class="table table-bordered table-striped">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
@@ -18,6 +18,7 @@
             <th scope="col">U Space</th>
             <th scope="col">Tanggal Keluar</th>
             <th scope="col">Petugas</th>
+            <th scope="col">Vendor</th>
             <th scope="col">Ruangan</th>
             <th scope="col">Rack</th>
             <th scope="col">Installer</th>
@@ -29,18 +30,19 @@
             @foreach ($perangkatout as $key=>$value)
                 <tr>
                     <td>{{$key + 1}}</th>
-                    <td>{{$value->hostname}}</td>
-                    <td>{{$value->serial_number}}</td>
-                    <td>{{$value->model}}</td>
-                    <td>{{$value->merk->name}}</td>
-                    <td>{{$value->pdu}}</td>
-                    <td>{{$value->uspace}}</td>
-                    <td>{{$value->tgl_keluar}}</td>
-                    <td>{{$value->petugas}}</td>
-                    <td>{{$value->ruangan}}</td>
-                    <td>{{$value->rack}}</td>
-                    <td>{{$value->installer}}</td>
-                    <td>{{$value->keterangan}}</td>
+                        <td>{{$value->hostname}}</td>
+                        <td>{{$value->serial_number}}</td>
+                        <td>{{$value->model}}</td>
+                        <td>{{$value->merk->name}}</td>
+                        <td>{{$value->pdu}}</td>
+                        <td>{{$value->uspace}}</td>
+                        <td>{{$value->tgl_keluar}}</td>
+                        <td>{{$value->petugas->name}}</td>
+                        <td>{{$value->vendor->name}}</td>
+                        <td>{{$value->ruangan->name}}</td>
+                        <td>{{$value->rack}}</td>
+                        <td>{{$value->installer}}</td>
+                        <td>{{$value->keterangan}}</td>
                     <td>
                         <form action="/perangkatout/{{$value->id}}" method="POST">
                             <a href="/perangkatout/{{$value->id}}/edit" class="btn btn-primary">Edit</a>

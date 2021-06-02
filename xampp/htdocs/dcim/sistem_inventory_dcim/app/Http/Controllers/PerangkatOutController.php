@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\PerangkatOut;
 use App\Merk;
+use App\Petugas;
+use App\Vendor;
+use App\Ruangan;
 
 class PerangkatOutController extends Controller
 {
@@ -28,7 +31,10 @@ class PerangkatOutController extends Controller
     public function create()
     {
         $merks = Merk::all();
-        return view('perangkatout.create', compact('merks'));
+        $nm_petugas = Petugas::all();
+        $nm_vendor = Vendor::all();
+        $nm_ruangan = Ruangan::all();
+        return view('perangkatout.create', compact('merks', 'nm_petugas', 'nm_vendor', 'nm_ruangan'));
     }
 
     /**
@@ -42,14 +48,15 @@ class PerangkatOutController extends Controller
         $request->validate([
             'hostname' => 'required',
             'serial_number' => 'required',
-            'merk_id' => 'required',
             'model' => 'required',
+            'merk_id' => 'required',
+            'petugas_id' => 'required',
+            'vendor_id' => 'required',
             'pdu' => 'required',
             'uspace' => 'required',
             'tgl_keluar' => 'required',
-            'petugas' => 'required',
+            'ruangan_id' => 'required',
             'rack' => 'required',
-            'ruangan' => 'required',
             'installer' => 'required',
             'keterangan' => 'required'
         ]);
@@ -57,14 +64,15 @@ class PerangkatOutController extends Controller
         $perangkatout = PerangkatOut::create([
             'hostname' => $request->hostname,
             'serial_number' => $request->serial_number,
-            'merk_id' => $request->merk_id,
             'model' => $request->model,
+            'merk_id' => $request->merk_id,
+            'petugas_id' => $request->petugas_id,
+            'vendor_id' => $request->vendor_id,
             'pdu' => $request->pdu,
             'uspace' => $request->uspace,
             'tgl_keluar' => $request->tgl_keluar,
-            'petugas' => $request->petugas,
+            'ruangan_id' => $request->ruangan_id,
             'rack' => $request->rack,
-            'ruangan' => $request->ruangan,
             'installer' => $request->installer,
             'keterangan' => $request->keterangan
         ]);
@@ -91,8 +99,11 @@ class PerangkatOutController extends Controller
     public function edit($id)
     {
         $merk = Merk::all();
+        $nm_petugas = Petugas::all();
+        $nm_vendor = Vendor::all();
+        $nm_ruangan = Ruangan::all();
         $perangkatout = PerangkatOut::findorfail($id);
-        return view('perangkatout.edit', compact('perangkatout', 'merk'));
+        return view('perangkatout.edit', compact('perangkatout', 'merk', 'nm_petugas', 'nm_vendor', 'nm_ruangan'));
     }
 
     /**
@@ -107,13 +118,14 @@ class PerangkatOutController extends Controller
         $perangkatout = PerangkatOut::where('id', $id)->update([
             'hostname' => $request['hostname'],
             'serial_number' => $request['serial_number'],
-            'merk_id' => $request['merk_id'],
             'model' => $request['model'],
+            'merk_id' => $request['merk_id'],
+            'petugas_id' => $request['petugas_id'],
+            'vendor_id' => $request['vendor_id'],
             'pdu' => $request['pdu'],
             'uspace' => $request['uspace'],
             'tgl_keluar' => $request['tgl_keluar'],
-            'petugas' => $request['petugas'],
-            'ruangan' => $request['ruangan'],
+            'ruangan_id' => $request['ruangan_id'],
             'rack' => $request['rack'],
             'installer' => $request['installer'],
             'keterangan' => $request['keterangan']

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\Perangkat;
 use App\Merk;
+use App\Petugas;
+use App\Vendor;
+use App\Ruangan;
 
 class PerangkatController extends Controller
 {
@@ -28,7 +31,10 @@ class PerangkatController extends Controller
     public function create()
     {
         $merks = Merk::all();
-        return view('perangkat.create', compact('merks'));
+        $nm_petugas = Petugas::all();
+        $nm_vendor = Vendor::all();
+        $nm_ruangan = Ruangan::all();
+        return view('perangkat.create', compact('merks', 'nm_petugas', 'nm_vendor', 'nm_ruangan'));
     }
 
     /**
@@ -42,14 +48,15 @@ class PerangkatController extends Controller
         $request->validate([
             'hostname' => 'required',
             'serial_number' => 'required',
-            'merk_id' => 'required',
             'model' => 'required',
+            'merk_id' => 'required',
+            'petugas_id' => 'required',
+            'vendor_id' => 'required',
             'pdu' => 'required',
             'uspace' => 'required',
             'tgl_masuk' => 'required',
-            'petugas' => 'required',
+            'ruangan_id' => 'required',
             'rack' => 'required',
-            'ruangan' => 'required',
             'installer' => 'required',
             'keterangan' => 'required'
         ]);
@@ -57,14 +64,15 @@ class PerangkatController extends Controller
         $perangkat = Perangkat::create([
             'hostname' => $request->hostname,
             'serial_number' => $request->serial_number,
-            'merk_id' => $request->merk_id,
             'model' => $request->model,
+            'merk_id' => $request->merk_id,
+            'petugas_id' => $request->petugas_id,
+            'vendor_id' => $request->vendor_id,
             'pdu' => $request->pdu,
             'uspace' => $request->uspace,
             'tgl_masuk' => $request->tgl_masuk,
-            'petugas' => $request->petugas,
+            'ruangan_id' => $request->ruangan_id,
             'rack' => $request->rack,
-            'ruangan' => $request->ruangan,
             'installer' => $request->installer,
             'keterangan' => $request->keterangan
         ]);
@@ -92,8 +100,11 @@ class PerangkatController extends Controller
     public function edit($id)
     {
         $merk = Merk::all();
+        $nm_petugas = Petugas::all();
+        $nm_vendor = Vendor::all();
+        $nm_ruangan = Ruangan::all();
         $perangkat = Perangkat::findorfail($id);
-        return view('perangkat.edit', compact('perangkat', 'merk'));
+        return view('perangkat.edit', compact('perangkat', 'merk', 'nm_petugas', 'nm_vendor', 'nm_ruangan'));
     }
 
     /**
@@ -108,13 +119,14 @@ class PerangkatController extends Controller
         $perangkat = Perangkat::where('id', $id)->update([
             'hostname' => $request['hostname'],
             'serial_number' => $request['serial_number'],
-            'merk_id' => $request['merk_id'],
             'model' => $request['model'],
+            'merk_id' => $request['merk_id'],
+            'petugas_id' => $request['petugas_id'],
+            'vendor_id' => $request['vendor_id'],
             'pdu' => $request['pdu'],
             'uspace' => $request['uspace'],
             'tgl_masuk' => $request['tgl_masuk'],
-            'petugas' => $request['petugas'],
-            'ruangan' => $request['ruangan'],
+            'ruangan_id' => $request['ruangan_id'],
             'rack' => $request['rack'],
             'installer' => $request['installer'],
             'keterangan' => $request['keterangan']

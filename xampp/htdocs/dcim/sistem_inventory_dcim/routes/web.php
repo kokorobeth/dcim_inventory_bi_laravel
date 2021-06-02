@@ -14,9 +14,9 @@
 
 Route::group(['middleware' => ['auth']], function() {
 
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
     // Route::get('/', 'HomeController@index')->name('home');
     
@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('perangkat', 'PerangkatController');
     Route::resource('perangkatout', 'PerangkatOutController');
 
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
 Auth::routes();

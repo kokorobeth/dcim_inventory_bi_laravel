@@ -11,12 +11,12 @@
             @method('put')
             <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" class="form-control" value="{{$petugas->name}}" name="name" id="name" placeholder="Masukkan Nama">
+                <input type="text" class="form-control" value="{{$petugas->name}}" name="name" id="name" placeholder="Masukkan Nama petugas">
                 @error('name')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
 </div>

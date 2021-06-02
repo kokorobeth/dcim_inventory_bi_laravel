@@ -11,11 +11,7 @@ class PetugasController extends Controller
         $this->middleware('auth')->except(['index
         ']);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $petugas = Petugas::all();
@@ -58,8 +54,7 @@ class PetugasController extends Controller
      */
     public function show($id)
     {
-        $petugas = Petugas::find($id);
-        return view('petugas.show', compact('petugas'));
+        //
     }
 
     /**

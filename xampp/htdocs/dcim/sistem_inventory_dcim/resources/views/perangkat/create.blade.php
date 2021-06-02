@@ -65,23 +65,38 @@
                         {{ $message }}
                     </div>
                 @enderror
-                {{-- <label for="tgl_keluar">Tanggal Keluar</label>
-                <input type="date" class="form-control" name="tgl_keluar" id="tgl_keluar" placeholder="Tanggal Keluar">
-                @error('tgl_keluar')
+                <label for="petugas">Petugas</label>
+                <select name="petugas_id" id="" class="form-control">
+                    <option value="">-</option>
+                    @foreach ($nm_petugas as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                @error('petugas_id')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>
-                @enderror --}}
-                <label for="petugas">Petugas</label>
-                <input type="text" class="form-control" name="petugas" id="petugas" placeholder="Masukkan Petugas">
-                @error('petugas')
+                @enderror
+                <label for="vendor">Vendor</label>
+                <select name="vendor_id" id="" class="form-control">
+                    <option value="">-</option>
+                    @foreach ($nm_vendor as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                @error('vendor_id')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>
                 @enderror
                 <label for="ruangan">Ruangan</label>
-                <input type="text" class="form-control" name="ruangan" id="ruangan" placeholder="Masukkan Serial Number">
-                @error('ruangan')
+                <select name="ruangan_id" id="" class="form-control">
+                    <option value="">-</option>
+                    @foreach ($nm_ruangan as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                @error('ruangan_id')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>

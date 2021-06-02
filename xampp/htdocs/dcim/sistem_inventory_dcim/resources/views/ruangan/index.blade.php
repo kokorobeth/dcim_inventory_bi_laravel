@@ -21,7 +21,6 @@
                     <td>{{$value->name}}</td>
                     <td>
                         <form action="/ruangan/{{$value->id}}" method="POST">
-                            {{-- <a href="/ruangan/{{$value->id}}" class="btn btn-info">Show</a> --}}
                             <a href="/ruangan/{{$value->id}}/edit" class="btn btn-primary">Edit</a>
                             @csrf
                             @method('DELETE')

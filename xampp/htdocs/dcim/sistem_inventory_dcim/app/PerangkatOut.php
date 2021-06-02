@@ -12,11 +12,13 @@ class PerangkatOut extends Model
         'serial_number', 
         'model', 
         'merk_id',
+        'petugas_id',
+        'vendor_id',
         'pdu',
         'uspace',
         'tgl_keluar',
         'petugas',
-        'ruangan',
+        'ruangan_id',
         'rack',
         'installer',
         'keterangan'
@@ -26,7 +28,13 @@ class PerangkatOut extends Model
         return $this->belongsTo('App\Merk');
     }
 
-    public function report() {
-        return $this->hasMany('App\Report');
+    public function petugas() {
+        return $this->belongsTo('App\Petugas');
+    }
+    public function vendor() {
+        return $this->belongsTo('App\Vendor');
+    }
+    public function ruangan() {
+        return $this->belongsTo('App\Ruangan');
     }
 }

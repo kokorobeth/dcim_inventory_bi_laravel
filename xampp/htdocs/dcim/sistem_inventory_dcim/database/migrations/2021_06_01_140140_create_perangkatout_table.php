@@ -20,11 +20,15 @@ class CreatePerangkatoutTable extends Migration
             $table->string('model');
             $table->unsignedBigInteger('merk_id');
             $table->foreign('merk_id')->references('id')->on('merks');
+            $table->unsignedBigInteger('petugas_id');
+            $table->foreign('petugas_id')->references('id')->on('petugas');
+            $table->unsignedBigInteger('vendor_id');
+            $table->foreign('vendor_id')->references('id')->on('vendors');
             $table->string('pdu');
             $table->string('uspace');
             $table->string('tgl_keluar');
-            $table->string('petugas');
-            $table->string('ruangan');
+            $table->unsignedBigInteger('ruangan_id');
+            $table->foreign('ruangan_id')->references('id')->on('ruangans');
             $table->string('rack');
             $table->string('installer');
             $table->string('keterangan');
