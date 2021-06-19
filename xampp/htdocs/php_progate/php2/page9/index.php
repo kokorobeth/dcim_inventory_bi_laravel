@@ -36,8 +36,6 @@ $menus = array($juice, $coffee, $curry, $pasta);
       <?php foreach($menus as $menu): ?>
       <h3><?php echo $menu->name ?></h3>
       <?php endforeach?>
-      
-      
     </div>
   </div>
 </body>
