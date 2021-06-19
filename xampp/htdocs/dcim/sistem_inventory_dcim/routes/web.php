@@ -15,7 +15,7 @@
 Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('/home');
     });
 
     // Route::get('/', 'HomeController@index')->name('home');
@@ -26,6 +26,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('merk', 'MerkController');
     Route::resource('perangkat', 'PerangkatController');
     Route::resource('perangkatout', 'PerangkatOutController');
+
+    Route::get('toolsin', 'ToolsInController@index');
+    Route::get('toolsin/export_excel', 'ToolsInController@export_excel');
+
+    Route::get('toolsout', 'ToolsOutController@index');
+    Route::get('toolsout/export_excel', 'ToolsOutController@export_excel');
 
     Route::get('/home', 'HomeController@index')->name('home');
 });

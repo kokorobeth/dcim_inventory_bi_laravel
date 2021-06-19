@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Perangkat;
 use App\Merk;
 use App\Petugas;
 use App\Vendor;
 use App\Ruangan;
+
+use App\Exports\ToolsinExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class PerangkatController extends Controller
 {
@@ -144,5 +147,10 @@ class PerangkatController extends Controller
     {
         $perangkat = Perangkat::destroy($id);
         return redirect('/perangkat');
+    }
+
+    public function export_excel() {
+        return Excel::download(new ToolsinExport, 'toolsin.xlsx');
+        // return (new ToolsinExport)->download('toolsIn.xlsx');
     }
 }

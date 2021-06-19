@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Exports\ToolsOut;
 use App\PerangkatOut;
 use App\Merk;
 use App\Petugas;

@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan name">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan name" autocomplete="off">
                 @error('name')
                     <div class="alert alert-danger">
                         {{ $message }}

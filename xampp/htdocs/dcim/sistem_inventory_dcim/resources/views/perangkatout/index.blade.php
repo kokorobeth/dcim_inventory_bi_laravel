@@ -6,6 +6,7 @@
 
 @section('content')
     <a href="/perangkatout/create" class="btn btn-primary my-2">Tambah</a>
+    <a href="/toolsout/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
     <table id="example1" class="table table-bordered table-striped">
         <thead class="thead-light">
         <tr>
